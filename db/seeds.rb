@@ -17,12 +17,12 @@ require 'json'
 
 url = 'http://tmdb.lewagon.com/3/movie/top_rated'
 
-
+uri = URI(url)
 response = open(api_url)
-json_data = JSON.parse(response.read)
+movie_data = JSON.parse(response.read)
 
 # Seed the movies
-json_data['results'].each do |movie|
+movie_data['results'].each do |movie|
   Movie.create(
     title: movie['title'],
     overview: movie['overview'],
